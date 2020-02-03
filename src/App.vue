@@ -1,9 +1,14 @@
 <template> 
+<div>
+    <button v-on:click="selectAllRows()" id='selectAll'>Select All</button>
+    <button v-on:click="deselectAllRows()" id='deselectAll'>Deselect All</button>
     <ag-grid-vue style="width: 500px; height: 300px;"
         class="ag-theme-balham"
         :columnDefs="columnDefs"
+        :gridOptions="gridOptions"
         :rowData="rowData">
     </ag-grid-vue>
+</div>
     </template>
 <style>
 @import "../node_modules/ag-grid-community/dist/styles/ag-grid.css";
@@ -13,10 +18,13 @@
 <script>
 import { AgGridVue } from 'ag-grid-vue';
 
+
 export default {
     name: 'App',
     data() {
         return {
+            gridOptions:null,
+            gridApi:null,
             columnDefs: null,
             rowData: null
         }
@@ -25,6 +33,7 @@ export default {
         AgGridVue
     },
     beforeMount() {
+        this.gridOptions= {};
         this.columnDefs = [
             {headerName: 'Make', field: 'make'},
             {headerName: 'Model', field: 'model'},
@@ -36,6 +45,18 @@ export default {
             {make: 'Ford', model: 'Mondeo', price: 32000},
             {make: 'Porsche', model: 'Boxter', price: 72000}
         ];
-    }
+    },
+    mounted() {
+    this.gridApi = this.gridOptions.api;
+    this.gridColumnApi = this.gridOptions.columnApi;
+  },
+  methods: {
+      selectAllRows() {
+          this.gridApi.selectAll()
+      },
+      deselectAllRows() {
+          this.gridApi.deselectAll()
+      }
+  }
 }
 </script>
