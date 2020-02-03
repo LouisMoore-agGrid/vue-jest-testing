@@ -1,6 +1,5 @@
 import {mount} from '@vue/test-utils'
 import App from '@/src/App.vue'
-import { AgGridVue } from 'ag-grid-vue';
 
 let component = null;
 let agGridVue = null;
