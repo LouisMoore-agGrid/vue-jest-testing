@@ -10,7 +10,7 @@
     "test:unit": "vue-cli-service test:unit"
   },
   "dependencies": {
-    "ag-grid-community": "^22.1.1",
+    "ag-grid-community": "^31.3.4",
     "ag-grid-vue": "^22.1.1",
     "core-js": "^3.4.4",
     "jest": "^25.1.0",
